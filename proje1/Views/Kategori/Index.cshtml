@@ -1,0 +1,35 @@
+﻿@model List<Kategori>
+
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Kategoriler
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Kategori" asp-action="kategoriOlustur" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Yeni Kategori Ekle
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Kategori Adı</th>
+                <th>Sıralama</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var veriler in Model.OrderBy(x=>x.DisplayOrder))
+            {
+                <tr>
+                    <td>@veriler.Name</td>
+                    <td>@veriler.DisplayOrder</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
