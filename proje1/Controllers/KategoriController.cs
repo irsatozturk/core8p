@@ -36,7 +36,7 @@ namespace proje1.Controllers
                 _veritabani.SaveChanges();
                 return RedirectToAction("Index", "Kategori");
             }
-            return View(gelenData);
+            return View(gelenData); ;
         }
     }
 }
