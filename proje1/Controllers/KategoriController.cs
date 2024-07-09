@@ -27,19 +27,20 @@ namespace proje1.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult kategoriOlustur(Kategori gelenData)
+        public IActionResult kategoriOlustur(Kategori postData)
         {
-            if (gelenData.Name == gelenData.DisplayOrder.ToString()) 
+            if (postData.Name == postData.DisplayOrder.ToString()) 
             {
                 ModelState.AddModelError("name", "Kategori adı sıra numarası ile aynı olamaz");
             }
             if (ModelState.IsValid)
             {
-                _veritabani.Kategoriler.Add(gelenData);
+                _veritabani.Kategoriler.Add(postData);
                 _veritabani.SaveChanges();
+                TempData["basarili"] = "Kategori Kayıt İşlemi Başarılı";
                 return RedirectToAction("Index", "Kategori");
             }
-            return View(gelenData);
+            return View(postData);
         }
 
         //***************//
@@ -61,15 +62,15 @@ namespace proje1.Controllers
             return View(dbDatasi);
         }
         [HttpPost]
-        public IActionResult kategoriDuzenle(Kategori gelenData)
+        public IActionResult kategoriDuzenle(Kategori postData)
         {
             if (ModelState.IsValid)
             {
-                _veritabani.Kategoriler.Update(gelenData);
+                _veritabani.Kategoriler.Update(postData);
                 _veritabani.SaveChanges();
                 return RedirectToAction("Index", "Kategori");
             }
-            return View(gelenData);
+            return View(postData);
         }
 
         //***************//
@@ -89,10 +90,17 @@ namespace proje1.Controllers
             }
             return View(dbDatasi);
         }
-        [HttpPost]
-        public IActionResult kategoriSil(Kategori gelenData)
+        [HttpPost, ActionName("kategoriSil")]
+        //Yukardaki "kategoriSil" ve aşağıdaki "kategoriSil" aynı veri tipi "int" takpi ediyor,
+        //Hangisinin devreye gireceğinde karışıklık olacağı için alttakinin sonuna "_x" ekledim
+        public IActionResult kategoriSil_x(int? id)
         {
-            _veritabani.Kategoriler.Remove(gelenData);
+            Kategori? dbDatasi = _veritabani.Kategoriler.Find(id);
+            if (dbDatasi == null)
+            {
+                return NotFound();
+            }
+            _veritabani.Kategoriler.Remove(dbDatasi);
             _veritabani.SaveChanges();
             return RedirectToAction("Index", "Kategori");
         }

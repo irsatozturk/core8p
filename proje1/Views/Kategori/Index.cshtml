@@ -34,6 +34,12 @@
                             <a asp-controller="Kategori" asp-action="kategoriDuzenle" asp-route-id="@veriler.Id" class="btn btn-dark mx-2">
                                 <i class="bi bi-pencil-square"></i> Düzenle
                             </a>
+                            @*
+                              Buradaki "asp-route-id" alanları, post veri adını gönderiyor "id" şeklinde
+                              "asp-route-xxx" bu yapı sabit sondaki "xxx" post get verinin adını veriyor
+                              "KategoriController.cs" dosyasındaki "public IActionResult kategoriSil(int? id)"
+                              fonksiyonunda parantez içindeki "id" buradan geliyor.
+                            *@
                             <a asp-controller="Kategori" asp-action="kategoriSil" asp-route-id="@veriler.Id" class="btn btn-danger mx-2">
                                 <i class="bi bi-trash-fill"></i> Sil
                             </a>
