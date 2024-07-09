@@ -19,6 +19,9 @@ namespace proje1.Controllers
             return View(kategoriListesi);
         }
 
+        //**************//
+        //KAYDETME ALANI//
+        //**************//
         public IActionResult kategoriOlustur()
         {
             return View();
@@ -39,6 +42,9 @@ namespace proje1.Controllers
             return View(gelenData);
         }
 
+        //***************//
+        //DÜZENLEME ALANI//
+        //***************//
         public IActionResult kategoriDuzenle(int? id)
         {
             if (id == null || id == 0)
@@ -54,19 +60,41 @@ namespace proje1.Controllers
             }
             return View(dbDatasi);
         }
-
-
-
         [HttpPost]
         public IActionResult kategoriDuzenle(Kategori gelenData)
         {
             if (ModelState.IsValid)
             {
-                _veritabani.Kategoriler.Add(gelenData);
+                _veritabani.Kategoriler.Update(gelenData);
                 _veritabani.SaveChanges();
                 return RedirectToAction("Index", "Kategori");
             }
             return View(gelenData);
+        }
+
+        //***************//
+        //SİLME ALANI//
+        //***************//
+        public IActionResult kategoriSil(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Kategori? dbDatasi = _veritabani.Kategoriler.Find(id);
+
+            if (dbDatasi == null)
+            {
+                return NotFound();
+            }
+            return View(dbDatasi);
+        }
+        [HttpPost]
+        public IActionResult kategoriSil(Kategori gelenData)
+        {
+            _veritabani.Kategoriler.Remove(gelenData);
+            _veritabani.SaveChanges();
+            return RedirectToAction("Index", "Kategori");
         }
     }
 }
