@@ -20,6 +20,7 @@
             <tr>
                 <th>Kategori Adı</th>
                 <th>Sıralama</th>
+                <th>Müdahale</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,16 @@
                 <tr>
                     <td>@veriler.Name</td>
                     <td>@veriler.DisplayOrder</td>
+                    <td>
+                        <div class="w-50 btn-group" role="group">
+                            <a asp-controller="Kategori" asp-action="kategoriDuzenle" asp-route-id="@veriler.Id" class="btn btn-dark mx-2">
+                                <i class="bi bi-pencil-square"></i> Düzenle
+                            </a>
+                            <a asp-controller="Kategori" asp-action="Sil" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Sil
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>
