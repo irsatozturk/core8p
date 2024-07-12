@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/proje1.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 </head>
 <body>
     <header>
@@ -36,6 +38,8 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @* alttaki satır include mantığında çalışıyor olup her yere _Uyarılar dosyasını import eder*@
+            <partial name="_Uyarilar" />
             @RenderBody()
         </main>
     </div>

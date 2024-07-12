@@ -37,7 +37,7 @@ namespace proje1.Controllers
             {
                 _veritabani.Kategoriler.Add(postData);
                 _veritabani.SaveChanges();
-                TempData["basarili"] = "Kategori Kayıt İşlemi Başarılı";
+                TempData["mesaj"] = "Kategori Kayıt İşlemi Başarılı";
                 return RedirectToAction("Index", "Kategori");
             }
             return View(postData);
@@ -68,6 +68,7 @@ namespace proje1.Controllers
             {
                 _veritabani.Kategoriler.Update(postData);
                 _veritabani.SaveChanges();
+                TempData["mesaj"] = "Kategori Güncelleme İşlemi Başarılı";
                 return RedirectToAction("Index", "Kategori");
             }
             return View(postData);
@@ -102,6 +103,7 @@ namespace proje1.Controllers
             }
             _veritabani.Kategoriler.Remove(dbDatasi);
             _veritabani.SaveChanges();
+            TempData["mesaj"] = "Kategori Silme İşlemi Başarılı";
             return RedirectToAction("Index", "Kategori");
         }
     }

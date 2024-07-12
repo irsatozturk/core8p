@@ -1,0 +1,9 @@
+﻿@if (TempData["mesaj"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options.positionClass = 'toast-top-center';
+        toastr.info('@TempData["mesaj"]');
+    </script>
+}
