@@ -5541,6 +5541,7 @@ textarea.form-control-lg {
 }
 
 .toast {
+    top:10px;
     --bs-toast-zindex: 1090;
     --bs-toast-padding-x: 0.75rem;
     --bs-toast-padding-y: 0.5rem;
