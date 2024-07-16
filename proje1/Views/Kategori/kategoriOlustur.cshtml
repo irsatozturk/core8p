@@ -1,11 +1,14 @@
 ﻿@model Kategori
-
-<form method="post">
-    <div class="border p-3 mt4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Kategori Oluştur</h2>
-            <hr />
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-light ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-dark py-2">Kategori Ekleme Alanı</h2>
+            </div>
         </div>
+    </div>
+    <form method="post">
+    <div class="border p-3 mt4">
         <div class="mb-3 row p-1">
             <label asp-for="Name" class="p-0"></label>
             <input asp-for="Name" class="form-control" />
@@ -28,7 +31,7 @@
     </div>
     <div asp-validation-summary="All"></div>
 </form>
-
+</div>
 @* 
     Aşağıdaki kısım sunucu tarafında form kontrolleri yapılırken
     ayrıca client tarafında da js ile kontrolleri yapıyor otoma-
